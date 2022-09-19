@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/pokemonFragment">
+
+    <fragment
+        android:id="@+id/pokemonFragment"
+        android:name="com.example.pokemonapp.ui.fragments.pokemons.PokemonFragment"
+        android:label="Pokemons"
+        tools:layout="@layout/fragment_pokemon" >
+        <action
+            android:id="@+id/action_pokemonFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.pokemonapp.ui.fragments.favourites.FavouritesFragment"
+        android:label="My Favourites"
+        tools:layout="@layout/fragment_favourites" />
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.example.pokemonapp.ui.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details" >
+        <argument
+            android:name="pokemon"
+            app:argType="com.example.pokemonapp.models.Pokemon" />
+    </activity>
+</navigation>
