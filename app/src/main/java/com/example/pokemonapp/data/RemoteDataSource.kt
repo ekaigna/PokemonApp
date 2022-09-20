@@ -1,8 +1,5 @@
 package com.example.pokemonapp.data
 
-import android.util.Log
-import com.example.pokemonapp.api.PokemonRepository
-import com.example.pokemonapp.api.model.PokemonApiResult
 import com.example.pokemonapp.api.model.PokemonsApiResult
 import com.example.pokemonapp.data.network.PokemonApi
 import com.example.pokemonapp.models.Pokemon
@@ -16,7 +13,11 @@ class RemoteDataSource @Inject constructor(
         return pokemonApi.getPokemons(queries)
     }
 
-    suspend fun getPokemon(number: Int): Response<PokemonApiResult> {
+    suspend fun getPokemon(number: Int): Response<Pokemon> {
         return pokemonApi.getPokemon(number)
+    }
+
+    suspend fun getPokemonByName(name: String): Response<Pokemon> {
+        return pokemonApi.getPokemonByName(name)
     }
 }

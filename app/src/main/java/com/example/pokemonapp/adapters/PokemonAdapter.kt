@@ -53,4 +53,6 @@ class PokemonAdapter() : RecyclerView.Adapter<PokemonAdapter.MyViewHolder>() {
 
 
 
+
+
 }

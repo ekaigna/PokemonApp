@@ -31,23 +31,23 @@ class OverviewFragment : Fragment() {
         Glide.with(binding.mainImageView.context).load(myBundle.imageUrl).into(binding.mainImageView)
         binding.titleTextView.text = myBundle.formattedName
         binding.subtitleTextView.text = myBundle.formattedNumber
-        binding.type1TextView.text = formatName( myBundle.types[0].name)
+        binding.type1TextView.text = formatName(myBundle.types[0].type.name)
 
         binding.weightNumber.text = myBundle.weight.toString() + " hg"
         binding.heightNumber.text = myBundle.height.toString() + " dm"
 
-        binding.speciesName.text = myBundle.species.name
+        binding.speciesName.text = formatName(myBundle.species.name)
 
         if (myBundle.abilities.size > 1) {
-            binding.habilitiesList.text = myBundle.abilities.joinToString{it.name}
+            binding.habilitiesList.text = myBundle.abilities.joinToString{formatName(it.ability.name)}
 
         } else {
-            binding.habilitiesList.text = myBundle.abilities[0].name
+            binding.habilitiesList.text = formatName(myBundle.abilities[0].ability.name)
         }
 
         if(myBundle.types.size > 1) {
             binding.type2TextView.visibility = View.VISIBLE
-            binding.type2TextView.text = formatName(myBundle.types[1].name)
+            binding.type2TextView.text = formatName(myBundle.types[1].type.name)
 
         } else {
             binding.type2TextView.visibility = View.GONE

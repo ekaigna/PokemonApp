@@ -2,11 +2,13 @@ package com.example.pokemonapp.ui.fragments.pokemons
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -21,7 +23,7 @@ import com.example.pokemonapp.viewmodels.PokemonsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PokemonFragment : Fragment() {
+class PokemonFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private val args by navArgs<PokemonFragmentArgs>()
 
@@ -46,6 +48,23 @@ class PokemonFragment : Fragment() {
         _binding = FragmentPokemonBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.pokemons_menu, menu)
+
+                val search = menu.findItem(R.id.menu_search)
+                val searchView = search.actionView as? SearchView
+                searchView?.isSubmitButtonEnabled = true
+                searchView?.setOnQueryTextListener(this@PokemonFragment)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         setupRecyclerView()
         requestApiData()
 
@@ -79,6 +98,48 @@ class PokemonFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun searchApiData(searchQuery: String) {
+        Log.d("searchApi", "ENTROU")
+        showShimmerEffect()
+        mainViewModel.searchPokemon(searchQuery)
+        mainViewModel.searchedPokemonsResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    var listOfPokemons: List<Pokemon> = emptyList()
+                    val pokemon = response.data
+                    if (pokemon != null) {
+                        listOfPokemons.toMutableList().add(pokemon)
+                    }
+                    listOfPokemons?.let { mAdapter.setData(it) }
+                }
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+                }
+            }
+        }
+    }
+
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query != null) {
+            searchApiData(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        return true
     }
 
     private fun setupRecyclerView() {

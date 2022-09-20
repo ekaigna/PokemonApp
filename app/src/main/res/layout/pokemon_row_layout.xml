@@ -99,7 +99,7 @@
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@+id/description_textView"
                         app:layout_constraintTop_toBottomOf="@+id/description_textView"
-                        tools:text="@{pokemon.types[0].name}" />
+                        tools:text="@{pokemon.types[0].type.name}" />
 
                     <TextView
                         android:id="@+id/tvType2"

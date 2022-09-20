@@ -16,18 +16,3 @@ data class PokemonResult(
     val url: String
 )
 
-data class PokemonApiResult(
-    val id: Int,
-    val name: String,
-    val types: List<PokemonTypeSlot>,
-    val weight: Int,
-    val height: Int,
-    val abilities: List<Ability>,
-    val species: Species,
-    val stats: List<Stat>
-)
-data class PokemonTypeSlot(
-    val slot: Int,
-    val type: PokemonType
-)
-

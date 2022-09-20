@@ -45,7 +45,7 @@ class PokemonRowBinding {
         fun loadType2(textView: TextView, typesList: List<PokemonType>) {
             if(typesList.size > 1) {
                 textView.visibility = View.VISIBLE
-                textView.text = typesList[1].name
+                textView.text = typesList[1].type.name
             } else {
                 textView.visibility = View.GONE
             }

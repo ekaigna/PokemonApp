@@ -18,9 +18,11 @@ import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.charts.HorizontalBarChart
+import com.github.mikephil.charting.formatter.IAxisValueFormatter
+import android.icu.number.Precision.currency
 
-
-
+import com.github.mikephil.charting.utils.ViewPortHandler
+import java.text.DecimalFormat
 
 
 class StatsFragment : Fragment() {
@@ -66,6 +68,7 @@ class StatsFragment : Fragment() {
         barDataSet.setColors(ColorTemplate.PASTEL_COLORS, 250)
         barDataSet.valueTextColor = Color.GRAY
         barDataSet.valueTextSize=15f
+        barDataSet.valueFormatter = FloatFormatter()
 
         barChart = binding.stats
 
@@ -105,6 +108,13 @@ class StatsFragment : Fragment() {
 
         return binding.root
     }
+    private class FloatFormatter : ValueFormatter() {
+        // override this for BarChart
+        override fun getBarLabel(barEntry: BarEntry?): String {
+            return barEntry?.y?.toInt().toString()
+        }
+    }
+
 
     private class MyFormatter : ValueFormatter() {
         override fun getAxisLabel(value: Float, axis: AxisBase): String {
