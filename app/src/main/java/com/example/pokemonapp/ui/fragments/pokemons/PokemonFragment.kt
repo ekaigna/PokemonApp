@@ -8,30 +8,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokemonapp.MainViewModel
+import com.example.pokemonapp.viewmodels.MainViewModel
 import com.example.pokemonapp.R
 import com.example.pokemonapp.adapters.PokemonAdapter
-import com.example.pokemonapp.api.model.PokemonApiResult
-import com.example.pokemonapp.api.model.PokemonsApiResult
 import com.example.pokemonapp.databinding.FragmentPokemonBinding
 import com.example.pokemonapp.models.Pokemon
 import com.example.pokemonapp.util.NetworkResult
+import com.example.pokemonapp.viewmodels.PokemonsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PokemonFragment : Fragment() {
+
+    private val args by navArgs<PokemonFragmentArgs>()
+
     private var _binding: FragmentPokemonBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var pokemonsViewModel: PokemonsViewModel
     private val mAdapter by lazy { PokemonAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        pokemonsViewModel = ViewModelProvider(requireActivity())[PokemonsViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -54,7 +58,7 @@ class PokemonFragment : Fragment() {
 
     private fun requestApiData() {
         Log.d("RecipesFragment", "requestApiData called!")
-        mainViewModel.getPokemons(applyQueries())
+        mainViewModel.getPokemons(pokemonsViewModel.applyQueries())
         mainViewModel.pokemonsResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -75,15 +79,6 @@ class PokemonFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun applyQueries() : HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-
-        queries["limit"] = "10"
-        queries["offset"] = "0"
-
-        return queries
     }
 
     private fun setupRecyclerView() {

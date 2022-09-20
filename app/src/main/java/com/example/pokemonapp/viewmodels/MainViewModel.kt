@@ -1,4 +1,4 @@
-package com.example.pokemonapp
+package com.example.pokemonapp.viewmodels
 
 import android.app.Application
 import android.content.Context
@@ -13,7 +13,6 @@ import com.example.pokemonapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel

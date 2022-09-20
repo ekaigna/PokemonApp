@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_pokemonFragment_to_pokemonBottomSheet"
             app:destination="@id/pokemonBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"

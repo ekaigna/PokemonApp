@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.pokemonapp.util.Constants.Companion.DEFAULT_POKEMON_TYPE
 import com.example.pokemonapp.databinding.PokemonBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -33,7 +35,8 @@ class PokemonBottomSheet : BottomSheetDialogFragment() {
         }
 
         binding.applyBtn.setOnClickListener {
-            TODO("chamada do filtro")
+            val action = PokemonBottomSheetDirections.actionPokemonBottomSheetToPokemonFragment()
+            findNavController().navigate(action)
         }
 
 
