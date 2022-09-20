@@ -36,4 +36,10 @@
     <color name="contextualActionBarColor">@color/dark</color>
     <color name="actionBarBackgroundColor">@color/white</color>
 
+    // Custom Chip Style
+    <color name="checkedChipBackgroundColor">#20F6CF57</color>
+    <color name="chipBackgroundColor">@color/lightGray</color>
+    <color name="checkedChipTextColor">@color/colorPrimary</color>
+    <color name="chipTextColor">@color/darkGray</color>
+
 </resources>

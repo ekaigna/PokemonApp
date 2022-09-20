@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_pokemonFragment_to_detailsActivity"
             app:destination="@id/detailsActivity" />
+        <action
+            android:id="@+id/action_pokemonFragment_to_pokemonBottomSheet"
+            app:destination="@id/pokemonBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
@@ -28,4 +31,13 @@
             android:name="pokemon"
             app:argType="com.example.pokemonapp.models.Pokemon" />
     </activity>
+    <dialog
+        android:id="@+id/pokemonBottomSheet"
+        android:name="com.example.pokemonapp.ui.fragments.pokemons.bottomsheet.PokemonBottomSheet"
+        android:label="pokemon_bottom_sheet"
+        tools:layout="@layout/pokemon_bottom_sheet" >
+        <action
+            android:id="@+id/action_pokemonBottomSheet_to_pokemonFragment"
+            app:destination="@id/pokemonFragment" />
+    </dialog>
 </navigation>

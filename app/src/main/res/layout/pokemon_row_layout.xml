@@ -37,6 +37,7 @@
                     android:id="@+id/pokemon_imageView"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    loadImageFromUrl="@{pokemon.imageUrl}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

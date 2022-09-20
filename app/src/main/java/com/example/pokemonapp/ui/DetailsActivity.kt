@@ -2,12 +2,11 @@ package com.example.pokemonapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
-import com.example.pokemonapp.Constants
+import com.example.pokemonapp.util.Constants
 import com.example.pokemonapp.R
 import com.example.pokemonapp.adapters.PagerAdapter
 import com.example.pokemonapp.databinding.ActivityDetailsBinding

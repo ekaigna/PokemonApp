@@ -32,13 +32,13 @@ class PokemonRowBinding {
             }
         }
 
-        //@BindingAdapter("loadImageFromUrl")
-        //@JvmStatic
-        //fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
-        //    imageView.load(imageUrl) {
-        //        error(R.drawable.ic_sad)
-        //    }
-        //}
+        @BindingAdapter("loadImageFromUrl")
+        @JvmStatic
+        fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
+            imageView.load(imageUrl) {
+                error(R.drawable.ic_sad)
+            }
+        }
 
         @BindingAdapter("loadType2")
         @JvmStatic

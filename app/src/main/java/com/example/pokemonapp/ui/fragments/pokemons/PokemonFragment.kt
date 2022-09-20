@@ -6,36 +6,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokemonapp.Constants
+import com.example.pokemonapp.MainViewModel
+import com.example.pokemonapp.R
 import com.example.pokemonapp.adapters.PokemonAdapter
-import com.example.pokemonapp.api.PokemonRepository
+import com.example.pokemonapp.api.model.PokemonApiResult
+import com.example.pokemonapp.api.model.PokemonsApiResult
 import com.example.pokemonapp.databinding.FragmentPokemonBinding
 import com.example.pokemonapp.models.Pokemon
-import com.example.pokemonapp.models.PokemonType
+import com.example.pokemonapp.util.NetworkResult
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PokemonFragment : Fragment() {
-
     private var _binding: FragmentPokemonBinding? = null
     private val binding get() = _binding!!
 
-    //private val mAdapter by lazy { PokemonAdapter() }
+    private lateinit var mainViewModel: MainViewModel
+    private val mAdapter by lazy { PokemonAdapter() }
 
-    //val charmander = Pokemon(
-     //   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-       // "1",
-    //"Charmander",
-    //        listOf(
-    //            PokemonType("Fire")
-    //        )
-    //    )
-    //
-    //    val pokemons = listOf(
-    //        charmander,
-    //        charmander,
-    //        charmander,
-    //        charmander
-    //    )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,17 +40,56 @@ class PokemonFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentPokemonBinding.inflate(inflater, container, false)
-        //binding.recyclerView.showShimmer();
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
         setupRecyclerView()
+        requestApiData()
+
+        binding.pokemonFab.setOnClickListener {
+        findNavController().navigate(R.id.action_pokemonFragment_to_pokemonBottomSheet)
+        }
 
         return binding.root
     }
 
+    private fun requestApiData() {
+        Log.d("RecipesFragment", "requestApiData called!")
+        mainViewModel.getPokemons(applyQueries())
+        mainViewModel.pokemonsResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    response.data?.let { mAdapter.setData(it as List<Pokemon>) }
+                    Log.d("pokemons data", response.data.toString())
+                }
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+                }
+            }
+        }
+    }
+
+    private fun applyQueries() : HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+
+        queries["limit"] = "10"
+        queries["offset"] = "0"
+
+        return queries
+    }
+
     private fun setupRecyclerView() {
+        binding.recyclerView.adapter = mAdapter
+       binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
-        Thread(Runnable {
-            loadPokemons()
-    }).start()
     }
 
     private fun showShimmerEffect() {
@@ -66,46 +102,6 @@ class PokemonFragment : Fragment() {
         binding.shimmerFrameLayout.stopShimmer()
         binding.shimmerFrameLayout.visibility = View.GONE
         binding.recyclerView.visibility = View.VISIBLE
-    }
-
-    private fun loadPokemons() {
-        val pokemonsApiResult = PokemonRepository.listPokemons()
-
-        pokemonsApiResult?.results?.let {
-
-            val pokemons: List<Pokemon?> = it.map { pokemonResult ->
-
-                val number = pokemonResult.url.replace("https://pokeapi.co/api/v2/pokemon/", "")
-                    .replace("/", "")
-                    .toInt()
-                val pokemonApiResult = PokemonRepository.getPokemon(number)
-
-                pokemonApiResult?.let {
-                    Pokemon(pokemonApiResult.id,
-                        pokemonApiResult.name,
-                        pokemonApiResult.types.map { type ->
-                        type.type
-                    },
-                        pokemonApiResult.weight,
-                        pokemonApiResult.height,
-                        pokemonApiResult.abilities.map { ability ->
-                           ability.ability
-                       },
-                        pokemonApiResult.species,
-                        pokemonApiResult.stats.map { stat ->
-                            stat
-                        })
-                }
-            }
-            Log.d("POKEMON_API", pokemonsApiResult.toString())
-
-                binding.recyclerView.post {
-                    hideShimmerEffect()
-                    binding.recyclerView.adapter = PokemonAdapter(pokemons)
-                binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())}
-        }
-
-
     }
 
 }

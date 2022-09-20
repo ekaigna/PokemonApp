@@ -1,12 +1,8 @@
 package com.example.pokemonapp.api
 
-import android.util.Log
-import com.example.pokemonapp.Constants
+import com.example.pokemonapp.util.Constants
 import com.example.pokemonapp.api.model.PokemonApiResult
 import com.example.pokemonapp.api.model.PokemonsApiResult
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

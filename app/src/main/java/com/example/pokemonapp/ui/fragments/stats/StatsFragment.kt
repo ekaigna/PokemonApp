@@ -7,9 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.pokemonapp.Constants
-import com.example.pokemonapp.R
-import com.example.pokemonapp.databinding.FragmentOverviewBinding
+import com.example.pokemonapp.util.Constants
 import com.example.pokemonapp.databinding.FragmentStatsBinding
 import com.example.pokemonapp.models.Pokemon
 import com.github.mikephil.charting.animation.Easing

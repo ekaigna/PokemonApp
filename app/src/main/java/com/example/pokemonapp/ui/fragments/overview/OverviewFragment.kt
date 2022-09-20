@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import coil.load
 import com.bumptech.glide.Glide
-import com.example.pokemonapp.Constants.Companion.POKEMON_RESULT_KEY
+import com.example.pokemonapp.util.Constants.Companion.POKEMON_RESULT_KEY
 import com.example.pokemonapp.databinding.FragmentOverviewBinding
 import com.example.pokemonapp.formatName
 import com.example.pokemonapp.models.Pokemon

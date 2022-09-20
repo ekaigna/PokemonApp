@@ -14,13 +14,14 @@ import com.example.pokemonapp.adapters.PokemonAdapter
 import com.example.pokemonapp.databinding.ActivityMainBinding
 import com.example.pokemonapp.models.Pokemon
 import com.example.pokemonapp.models.PokemonType
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.converter.gson.GsonConverterFactory
 
 import retrofit2.Retrofit
 
 
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
