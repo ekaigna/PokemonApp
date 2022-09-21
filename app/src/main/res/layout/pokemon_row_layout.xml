@@ -37,7 +37,7 @@
                     android:id="@+id/pokemon_imageView"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    loadImageFromUrl="@{pokemon.imageUrl}"
+                    loadImageFromUrl="@{pokemon.id}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -45,6 +45,7 @@
 
                 <TextView
                     android:id="@+id/title_textView"
+                    formatName="@{pokemon.name}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -53,7 +54,6 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/roboto"
                     android:maxLines="2"
-                    android:text="@{pokemon.formattedName}"
                     android:letterSpacing="0.1"
                     android:textColor="@color/darkGray"
                     android:textSize="21sp"
@@ -65,13 +65,14 @@
 
                 <TextView
                     android:id="@+id/description_textView"
+                    formatId="@{pokemon.id}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/roboto"
                     android:maxLines="3"
-                    android:text="@{pokemon.formattedNumber}"
+                    android:text="XXX"
                     android:textColor="@color/darkMediumGray"
                     android:textSize="14sp"
                     android:textStyle="normal"

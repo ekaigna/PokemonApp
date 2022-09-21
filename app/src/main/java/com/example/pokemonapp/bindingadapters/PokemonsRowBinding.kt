@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import coil.load
@@ -17,6 +16,19 @@ import com.example.pokemonapp.ui.fragments.pokemons.PokemonFragmentDirections
 class PokemonRowBinding {
 
     companion object {
+
+        @BindingAdapter("formatId")
+        @JvmStatic
+        fun formatId(textView: TextView, id: Int) {
+            val formattedNumber = "Nº " + id.toString().padStart(3, '0')
+            textView.text = formattedNumber
+        }
+
+        @BindingAdapter("formatName")
+        @JvmStatic
+        fun formatName(textView: TextView, name: String) {
+            textView.text = name.substring(0, 1).uppercase() + name.substring(1).lowercase();
+        }
 
         @BindingAdapter("onRecipeClickListener")
         @JvmStatic
@@ -34,7 +46,8 @@ class PokemonRowBinding {
 
         @BindingAdapter("loadImageFromUrl")
         @JvmStatic
-        fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
+        fun loadImageFromUrl(imageView: ImageView, id: Int) {
+            val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png"
             imageView.load(imageUrl) {
                 error(R.drawable.ic_sad)
             }

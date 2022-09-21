@@ -3,9 +3,9 @@ package com.example.pokemonapp.ui.fragments.pokemons
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
@@ -101,19 +101,19 @@ class PokemonFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun searchApiData(searchQuery: String) {
-        Log.d("searchApi", "ENTROU")
         showShimmerEffect()
         mainViewModel.searchPokemon(searchQuery)
         mainViewModel.searchedPokemonsResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
-                    var listOfPokemons: List<Pokemon> = emptyList()
+                    val listOfPokemons: MutableList<Pokemon> = mutableListOf()
                     val pokemon = response.data
                     if (pokemon != null) {
-                        listOfPokemons.toMutableList().add(pokemon)
+                        listOfPokemons.add(pokemon)
+                        Log.d("pokemonSearchMutable", listOfPokemons.toString())
                     }
-                    listOfPokemons?.let { mAdapter.setData(it) }
+                    listOfPokemons?.let { mAdapter.setData(it as List<Pokemon>) }
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()

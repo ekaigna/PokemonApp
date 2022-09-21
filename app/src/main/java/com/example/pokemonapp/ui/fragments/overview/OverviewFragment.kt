@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.pokemonapp.util.Constants.Companion.POKEMON_RESULT_KEY
 import com.example.pokemonapp.databinding.FragmentOverviewBinding
 import com.example.pokemonapp.formatName
+import com.example.pokemonapp.formatNumber
 import com.example.pokemonapp.models.Pokemon
 
 class OverviewFragment : Fragment() {
@@ -28,9 +29,10 @@ class OverviewFragment : Fragment() {
         val myBundle: Pokemon = args!!.getParcelable<Pokemon>(POKEMON_RESULT_KEY) as Pokemon
         Log.d("POKEMON_BUNDLE", myBundle.toString())
        // binding.mainImageView.load(myBundle.imageUrl)
-        Glide.with(binding.mainImageView.context).load(myBundle.imageUrl).into(binding.mainImageView)
-        binding.titleTextView.text = myBundle.formattedName
-        binding.subtitleTextView.text = myBundle.formattedNumber
+        val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${myBundle.id}.png"
+        Glide.with(binding.mainImageView.context).load(imageUrl).into(binding.mainImageView)
+        binding.titleTextView.text = formatName(myBundle.name)
+        binding.subtitleTextView.text = formatNumber(myBundle.id)
         binding.type1TextView.text = formatName(myBundle.types[0].type.name)
 
         binding.weightNumber.text = myBundle.weight.toString() + " hg"
