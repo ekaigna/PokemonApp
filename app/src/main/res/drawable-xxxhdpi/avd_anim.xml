@@ -1,0 +1,40 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="288dp"
+            android:height="288dp"
+            android:viewportWidth="288"
+            android:viewportHeight="288">
+            <path
+                android:name="path_3"
+                android:pathData="M 144 240 C 192.363 240 232.373 204.237 239.028 157.714 L 182.802 157.714 C 177.154 173.694 161.914 185.143 144 185.143 C 126.086 185.143 110.846 173.694 105.198 157.714 L 48.972 157.714 C 55.627 204.237 95.637 240 144 240 Z M 105.198 130.286 L 48.972 130.286 C 55.627 83.763 95.637 48 144 48 C 192.363 48 232.373 83.763 239.028 130.286 L 182.802 130.286 C 177.154 114.306 161.914 102.857 144 102.857 C 126.086 102.857 110.846 114.306 105.198 130.286 Z M 166.857 144 C 166.857 156.624 156.624 166.857 144 166.857 C 131.376 166.857 121.143 156.624 121.143 144 C 121.143 131.376 131.376 121.143 144 121.143 C 156.624 121.143 166.857 131.376 166.857 144 Z"
+                android:fillColor="#bababa"
+                android:strokeWidth="1"
+                android:fillType="evenOdd"/>
+        </vector>
+    </aapt:attr>
+    <target android:name="path_3">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="fillColor"
+                    android:duration="151"
+                    android:valueFrom="#f57d31"
+                    android:valueTo="#f9cf30"
+                    android:valueType="colorType"
+                    android:interpolator="@android:interpolator/fast_out_linear_in"/>
+                <objectAnimator
+                    android:propertyName="fillColor"
+                    android:startOffset="151"
+                    android:duration="149"
+                    android:valueFrom="#f9cf30"
+                    android:valueTo="#f57d31"
+                    android:valueType="colorType"
+                    android:interpolator="@android:interpolator/fast_out_linear_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
