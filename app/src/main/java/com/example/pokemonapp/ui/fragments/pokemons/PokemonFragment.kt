@@ -21,9 +21,13 @@ import com.example.pokemonapp.models.Pokemon
 import com.example.pokemonapp.util.NetworkResult
 import com.example.pokemonapp.viewmodels.PokemonsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.pokemonapp.ui.MainActivity
+
+
+
 
 @AndroidEntryPoint
-class PokemonFragment : Fragment(), SearchView.OnQueryTextListener {
+class PokemonFragment : Fragment(), SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
     private val args by navArgs<PokemonFragmentArgs>()
 
@@ -56,9 +60,9 @@ class PokemonFragment : Fragment(), SearchView.OnQueryTextListener {
 
                 val search = menu.findItem(R.id.menu_search)
                 val searchView = search.actionView as? SearchView
-                searchView?.isSubmitButtonEnabled = true
                 searchView?.setOnQueryTextListener(this@PokemonFragment)
-            }
+                searchView?.setOnCloseListener(this@PokemonFragment)
+                }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return true
@@ -74,6 +78,7 @@ class PokemonFragment : Fragment(), SearchView.OnQueryTextListener {
 
         return binding.root
     }
+
 
     private fun requestApiData() {
         Log.d("RecipesFragment", "requestApiData called!")
@@ -141,6 +146,12 @@ class PokemonFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(p0: String?): Boolean {
         return true
     }
+
+    override fun onClose(): Boolean {
+        requestApiData()
+        return false
+    }
+
 
     private fun setupRecyclerView() {
         binding.recyclerView.adapter = mAdapter

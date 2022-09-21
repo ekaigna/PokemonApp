@@ -5,9 +5,11 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import coil.load
+import com.bumptech.glide.Glide
 import com.example.pokemonapp.R
 import com.example.pokemonapp.models.Pokemon
 import com.example.pokemonapp.models.PokemonType
@@ -48,9 +50,7 @@ class PokemonRowBinding {
         @JvmStatic
         fun loadImageFromUrl(imageView: ImageView, id: Int) {
             val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png"
-            imageView.load(imageUrl) {
-                error(R.drawable.ic_sad)
-            }
+            Glide.with(imageView).load(imageUrl).into(imageView)
         }
 
         @BindingAdapter("loadType2")

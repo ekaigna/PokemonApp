@@ -26,9 +26,9 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="12dp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/poppins_bold"
+        android:letterSpacing="0"
         android:text="Title"
-        android:letterSpacing="0.1"
         android:textColor="@color/darkGray"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -40,8 +40,8 @@
         android:id="@+id/subtitle_textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/roboto"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/poppins"
         android:text="Number"
         android:textColor="@color/darkMediumGray"
         android:textSize="18sp"
@@ -58,7 +58,8 @@
         android:text="Poison"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/data_overlay"
         app:layout_constraintEnd_toEndOf="@+id/title_textView" />
 
@@ -71,7 +72,8 @@
         android:text="Grass"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
+        android:textStyle="normal"
         app:layout_constraintEnd_toStartOf="@+id/type1_textView"
         app:layout_constraintTop_toTopOf="@+id/type1_textView" />
 
@@ -99,28 +101,28 @@
             app:layout_constraintStart_toStartOf="@+id/data_overlay"
             app:layout_constraintTop_toTopOf="@+id/data_overlay">
 
-            <TextView
-                android:id="@+id/species"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
-                android:text="Species"
-                android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/species"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="Species"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/species_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
-                android:text="Seed"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/species_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Seed"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,10 +141,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:fontFamily="@font/poppins"
                 android:text="Height"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/height_number"
@@ -150,10 +152,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="3"
                 android:textColor="@color/white"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -173,10 +175,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:fontFamily="@font/poppins"
                 android:text="Weight"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/weight_number"
@@ -184,10 +186,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="3"
                 android:textColor="@color/white"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -207,10 +209,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:fontFamily="@font/poppins"
                 android:text="Abilities"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/habilities_list"
@@ -218,10 +220,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="3"
                 android:textColor="@color/white"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

@@ -1,7 +1,7 @@
 package com.example.pokemonapp
 
 fun formatNumber (number : Int): String {
-   return number.toString().padStart(3, '0')
+   return "Nº" + number.toString().padStart(3, '0')
 }
 
 fun formatName (name : String): String {

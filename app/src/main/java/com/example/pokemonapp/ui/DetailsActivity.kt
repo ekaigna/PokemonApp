@@ -28,6 +28,7 @@ class DetailsActivity : AppCompatActivity() {
         binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
         val fragments = ArrayList<Fragment>()
         fragments.add(OverviewFragment())
         fragments.add(StatsFragment())
@@ -52,6 +53,11 @@ class DetailsActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             tab.text = titles[position]
         }.attach()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish();
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

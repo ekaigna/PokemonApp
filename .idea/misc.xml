@@ -3,21 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/drawable/bg_gradient.xml" value="0.3828125" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/drawable/drawable_hdpi.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/drawable/ic_logo.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/drawable/round_background.xml" value="0.3828125" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/drawable/round_outline.xml" value="0.3828125" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/drawable/splash_background.xml" value="0.3828125" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/activity_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/fragment_favourites.xml" value="0.2219020172910663" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/fragment_overview.xml" value="0.22" />
-        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/fragment_pokemon.xml" value="0.1" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/fragment_pokemon.xml" value="0.33" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/fragment_pokemon__detail.xml" value="0.25" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/fragment_stats.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/gradient_overlay.xml" value="0.2453125" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/placeholder_row_layout.xml" value="0.5" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/pokemon_bottom_sheet.xml" value="0.20572916666666666" />
-        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/pokemon_row_layout.xml" value="0.1" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/layout/pokemon_row_layout.xml" value="0.75" />
         <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/menu/pokemons_menu.xml" value="0.10416666666666667" />
+        <entry key="..\:/Users/eignaten/AndroidStudioProjects/PokemonApp/app/src/main/res/menu/pokemons_menu.xml" value="0.22" />
       </map>
     </option>
   </component>

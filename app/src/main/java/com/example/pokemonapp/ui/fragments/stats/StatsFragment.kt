@@ -101,7 +101,6 @@ class StatsFragment : Fragment() {
         barChart.xAxis.textSize = 15f
         barChart.xAxis.textColor = Color.GRAY
         barData.barWidth = 0.1f
-        barChart.xAxis.xOffset = 20f
         barChart.invalidate()
 
 
